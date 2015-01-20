@@ -121,7 +121,6 @@ test('match URLs', function (t) {
 		return '"google.' + tld + '"';
 	}));
 
-	console.time('match URLs');
 	fixtures.forEach(function (el) {
 		if (!urlRegex().exec(el)) {
 			t.assert(false, el);
@@ -130,13 +129,11 @@ test('match URLs', function (t) {
 
 		t.assert(urlRegex().exec(el)[0] === el, el);
 	});
-	console.timeEnd('match URLs');
 
 	t.end();
 });
 
 test('match URLs (exact)', function (t) {
-	console.time('match URLs (exact)');
 	matchedFixtures.forEach(function (el) {
 		if (!urlRegex({ exact: true }).exec(el)) {
 			t.assert(false, el);
@@ -145,7 +142,6 @@ test('match URLs (exact)', function (t) {
 
 		t.assert(urlRegex({ exact: true }).exec(el)[0] === el, el);
 	});
-	console.timeEnd('match URLs (exact)');
 
 	t.end();
 });
@@ -163,7 +159,6 @@ test('match URLs (additionalTlds)', function (t) {
 		return '"google.' + tld + '"';
 	}));
 
-	console.time('match URLs (additionalTlds)');
 	fixtures.forEach(function (el) {
 		if (!urlRegex({ additionalTlds: additionalTlds }).exec(el)) {
 			t.assert(false, el);
@@ -172,13 +167,11 @@ test('match URLs (additionalTlds)', function (t) {
 
 		t.assert(urlRegex({ additionalTlds: additionalTlds }).exec(el)[0] === el, el);
 	});
-	console.timeEnd('match URLs (additionalTlds)');
 
 	t.end();
 });
 
 test('do not match URLs', function (t) {
-	console.time('do not match URLs');
 	nonMatchedFixtures.forEach(function (el) {
 		if (!urlRegex().exec(el)) {
 			t.assert(true);
@@ -187,7 +180,6 @@ test('do not match URLs', function (t) {
 
 		t.assert(urlRegex().exec(el)[0] !== el, el);
 	});
-	console.timeEnd('do not match URLs');
 
 	t.end();
 });
